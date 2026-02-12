@@ -30,5 +30,15 @@
  *   // => { items: [], totalBill: 0 }
  */
 export function sabziMandiBill(shoppingList, priceList) {
-  // Your code here
+  let items = [];
+  let totalBill = 0;
+
+  for (const { name, qty } of shoppingList) {
+    if (name in priceList && priceList[name] <= 80) {
+      items.push({ name, qty, cost: priceList[name] * qty });
+      totalBill += priceList[name] * qty;
+    }
+  }
+
+  return { items, totalBill };
 }
